@@ -88,12 +88,12 @@ class Moderation(commands.Cog):
             return
         reason = ' '.join(reason)
         for current_user in report['users']:
-            if current_user['name'] == user.name:
+            if current_user['name'] == user.id:
                 current_user['reasons'].append(reason)
                 break
         else:
             report['users'].append({
-                'name': user.name,
+                'name': user.id,
                 'reasons': [reason, ]
 
             })
@@ -106,7 +106,7 @@ class Moderation(commands.Cog):
     @commands.command(pass_context=True, aliases=['Warnings', 'warnIngs'])
     async def warnings(self, ctx, user: discord.User):
         for current_user in report['users']:
-            if user.name == current_user['name']:
+            if user.id == current_user['name']:
                 embed = discord.Embed(title="Warnings",
                                       description=f"{user.name} has been reported {len(current_user['reasons'])} times : {','.join(current_user['reasons'])}",
                                       color=0xf2da80)
@@ -140,6 +140,14 @@ class Moderation(commands.Cog):
         guild = ctx.guild
         await guild.create_role(name="Muted")
         await ctx.send("Muted role set")
+
+    @commands.command()
+    @commands.has_permissions(manage_roles=True)
+    async def roleadd(self, ctx, rolename=None):
+        print("Test")
+        guild = ctx.guild
+        await guild.create_role(name=rolename)
+        await ctx.send(f"Role added with the name - {rolename}")
 
 def setup(client):
     client.add_cog(Moderation(client))

@@ -2,13 +2,13 @@ import discord
 from discord.ext import commands
 import inspect
 
-client = commands.Bot(command_prefix = '.')
+
 
 class OW(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @client.command()
+    @commands.command()
     @commands.is_owner()
     async def Status_Update(self, ctx, *, status="Defualt Prefix = >"):
         game = discord.Game(status)
@@ -18,7 +18,7 @@ class OW(commands.Cog):
             embed = discord.Embed(title="Error", description="This command is an Owner Only command")
             await ctx.send(embed=embed)
 
-    @client.command()
+    @commands.command()
     @commands.is_owner()
     async def shutdown(self, ctx):
         await ctx.bot.logout()

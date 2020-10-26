@@ -189,10 +189,11 @@ async def setwelcomemessage(ctx, cha):
         json.dump(welcomesm, f, indent=4)
 
 
-extensions = ['cogs.Moderation', 'cogs.Helpcommand', 'cogs.Misc', 'cogs.OW', "cogs.Fun", "cogs.Giveaway", 'cogs.Posts']
+
+extensions = ['cogs.Moderation', 'cogs.Helpcommand', 'cogs.Misc', 'cogs.OW', "cogs.Fun", "cogs.Giveaway", 'cogs.Posts', 'cogs.ReactionRoles']
 
 if __name__ == '__main__':
     for ext in extensions:
         client.load_extension(ext)
 
-client.run('NzYyODIwODkxNzI1Mzk4MDY3.X3uuUQ.7ODKUy4yuQadwVlx1JXLk7AffLI')
+client.run('NzY2NTk1NzIzNjg0NzQxMTUw.X4lp5w.0N5pp2b3Wr1943o_mXhY-duiJPg')
